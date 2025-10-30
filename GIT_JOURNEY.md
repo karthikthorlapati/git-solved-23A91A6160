@@ -1,11 +1,11 @@
 # My Git Mastery Challenge Journey
 
 ## Student Information
-- Name: [KARTHIK THORLAPATI]
-- Student ID: [23A91A6160]
-- Repository: [https://github.com/karthikthorlapati/git-solved-23A91A6160.git]
-- Date Started: [28-10-2025]
-- Date Completed: [30-10-2025]
+- Name: T. Karthik
+- Student ID: 23A91A6160
+- Repository: https://github.com/karthikthorlapati/git-solved-23A91A6160.git
+- Date Started: 28/10/2025
+- Date Completed: 30/10/2025
 
 ## Task Summary
 Cloned instructor's repository with pre-built conflicts and resolved all 
@@ -39,60 +39,108 @@ merge conflicts across multiple branches using proper Git workflows.
 ### Merge 1: main + dev (6 files)
 
 #### Conflict 1: config/app-config.yaml
-- **Issue**: Production used port 8080, development used 3000
-- **Resolution**: Created unified config with environment-based settings
-- **Strategy**: Keep production as default, add dev as optional
-- **Difficulty**: Medium
-- **Time**: 15 minutes
+- *Issue*: Production used port 8080, development used 3000
+- *Resolution*: Created unified config with environment-based settings
+- *Strategy*: Keep production as default, add dev as optional
+- *Difficulty*: Medium
+- *Time*: 15 minutes
 
 #### Conflict 2: config/database-config.json
-- **Issue**: Different database hosts and SSL modes
-- **Resolution**: Created separate profiles for production and development
-- **Strategy**: Restructured JSON to support both environments
-- **Difficulty**: Medium
-- **Time**: 10 minutes
+- *Issue*: Different database hosts and SSL modes
+- *Resolution*: Created separate profiles for production and development
+- *Strategy*: Restructured JSON to support both environments
+- *Difficulty*: Medium
+- *Time*: 10 minutes
 
 #### Conflict 3: scripts/deploy.sh
-- **Issue**: Different deployment strategies (production vs docker-compose)
-- **Resolution**: Added conditional logic based on DEPLOY_ENV variable
-- **Strategy**: Made script handle both environments dynamically
-- **Difficulty**: Hard
-- **Time**: 20 minutes
+- *Issue*: Different deployment strategies (production vs docker-compose)
+- *Resolution*: Added conditional logic based on DEPLOY_ENV variable
+- *Strategy*: Made script handle both environments dynamically
+- *Difficulty*: Hard
+- *Time*: 20 minutes
 
 #### Conflict 4: scripts/monitor.js
-- **Issue**: Different monitoring intervals and log formats
-- **Resolution**: Environment-based configuration object
-- **Strategy**: Used process.env.NODE_ENV to determine behavior
-- **Difficulty**: Medium
-- **Time**: 15 minutes
+- *Issue*: Different monitoring intervals and log formats
+- *Resolution*: Environment-based configuration object
+- *Strategy*: Used process.env.NODE_ENV to determine behavior
+- *Difficulty*: Medium
+- *Time*: 15 minutes
 
 #### Conflict 5: docs/architecture.md
-- **Issue**: Different architectural descriptions
-- **Resolution**: Merged both descriptions into comprehensive document
-- **Strategy**: Created sections for each environment
-- **Difficulty**: Easy
-- **Time**: 10 minutes
+- *Issue*: Different architectural descriptions
+- *Resolution*: Merged both descriptions into comprehensive document
+- *Strategy*: Created sections for each environment
+- *Difficulty*: Easy
+- *Time*: 10 minutes
 
 #### Conflict 6: README.md
-- **Issue**: Different feature lists and version numbers
-- **Resolution**: Combined all features with clear environment labels
-- **Strategy**: Organized features by category
-- **Difficulty**: Easy
-- **Time**: 10 minutes
+- *Issue*: Different feature lists and version numbers
+- *Resolution*: Combined all features with clear environment labels
+- *Strategy*: Organized features by category
+- *Difficulty*: Easy
+- *Time*: 10 minutes
 
 ### Merge 2: main + conflict-simulator (6 files)
 
-[Document the second set of conflicts similarly]
+#### Conflict 1: config/app-config.yaml
 
-## Most Challenging Parts
+- *Issue*: Conflict between simulated environment configuration (used mock API endpoints) and main branch (used live production endpoints)
+- *Resolution*: Added environment toggle for SIMULATION_MODE to switch between mock and live endpoints
+- *Strategy*: Default to production unless explicitly running in simulation mode
+- *Difficulty*: Medium
+- *Time*: 15 minutes
 
-1. **Understanding Conflict Markers**: Initially confused by `<<<<<<<`, `=======`, `>>>>>>>` symbols. Learned that HEAD is current branch and the other side is incoming changes.
+#### Conflict 2: config/database-config.json
 
-2. **Deciding What to Keep**: Hardest part was choosing between conflicting code. Learned to read both versions completely before deciding.
+- *Issue*: Simulator used an in-memory SQLite DB; main used PostgreSQL
+- *Resolution*: Introduced dual configuration support — fallback to SQLite for simulation
+- *Strategy*: Added "mode": "simulation" flag and dynamic DB selection logic
+- *Difficulty*: Medium
+- *Time*: 10 minutes
 
-3. **Complex Logic Conflicts**: deploy.sh had completely different logic. Had to understand both approaches before combining.
+#### Conflict 3: scripts/deploy.sh
 
-4. **Testing After Resolution**: Making sure resolved code actually worked was crucial.
+- *Issue*: Simulator added mock deployment steps conflicting with production deploy logic
+- *Resolution*: Integrated simulation deployment path controlled by DEPLOY_MODE variable
+- *Strategy*: Modularized script to support both live and simulated deployment
+- *Difficulty*: Hard
+- *Time*: 25 minutes
+
+#### Conflict 4: scripts/monitor.js
+
+- *Issue*: Simulator monitored dummy endpoints at 5s intervals; main monitored live services at 60s intervals
+- *Resolution*: Created unified monitoring system configurable by environment
+- *Strategy*: Used environment variable MONITOR_INTERVAL and mock/live endpoints array
+- *Difficulty*: Medium
+- *Time*: 15 minutes
+
+#### Conflict 5: docs/architecture.md
+
+- *Issue*: Simulator described fake service interactions; main described actual microservice flow
+- *Resolution*: Combined both into one document under separate “Simulation Mode” and “Production Mode” sections
+- *Strategy*: Clearly labeled diagrams and flow descriptions
+- *Difficulty*: Easy
+- *Time*: 10 minutes
+
+#### Conflict 6: README.md
+
+- *Issue*: Simulator added testing instructions and mock service details; main contained production setup steps
+- *Resolution*: Merged both sections with clear headings for "Production Setup" and "Simulation Setup"
+- *Strategy*: Ensured README guides users through either path without confusion
+- *Difficulty*: Easy
+- *Time*: 10 minutes
+
+
+
+## Most Challenging Partse
+
+1. *Understanding Conflict Markers*: Initially confused by <<<<<<<, =======, >>>>>>> symbols. Learned that HEAD is current branch and the other side is incoming changes.
+
+2. *Deciding What to Keep*: Hardest part was choosing between conflicting code. Learned to read both versions completely before deciding.
+
+3. *Complex Logic Conflicts*: deploy.sh had completely different logic. Had to understand both approaches before combining.
+
+4. *Testing After Resolution*: Making sure resolved code actually worked was crucial.
 
 ## Key Learnings
 
